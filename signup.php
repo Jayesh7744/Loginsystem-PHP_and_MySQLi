@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // $exists = false;
 
     // check wether this username is exist
-    $existsql = "SELECT * FROM `jaynew` WHERE username = '$username'";
+    $existsql = "SELECT * FROM `loginsystem` WHERE username = '$username'";
     $result = mysqli_query($conn, $existsql);
     $numExistrow = mysqli_num_rows($result);
     if ($numExistrow > 0) {
@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // $exists = false;
         if (($password == $confirmpassword)) {
             $hash = password_hash($password, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO `jaynew` (`username`, `password`, `dt`) VALUES ('$username', '$hash', current_timestamp())";
+            $sql = "INSERT INTO `loginsystem` (`username`, `password`, `dt`) VALUES ('$username', '$hash', current_timestamp())";
 
             $result = mysqli_query($conn, $sql);
             if ($result) {
